@@ -1,0 +1,21 @@
+<div class="container mt-5">
+	<h4>Usuários</h4>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td><%= user.name %></td>
+					<td>
+						<%= link_to "Criar Chat", new_chat_path(user_ids: user.id), class: "btn btn-sm btn-success", data: { turbo: false } %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

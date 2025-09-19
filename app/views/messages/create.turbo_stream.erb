@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "form-messages" do %>
+  <%= render partial: "messages/form", locals: { message: Message.new, chat: @message.chat, current_user: current_user } %>
+<% end %>

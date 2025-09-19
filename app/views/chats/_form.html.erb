@@ -1,0 +1,13 @@
+<%= form_with(model: @chat, data: { turbo: false }, html: { class: "mb-3" }) do |form| %>
+	<div class="mb-3">
+		<%= form.label :users_id, "Usuário", class: "form-label" %>
+		<%= form.number_field :user_ids, class: "form-control", placeholder: "ID do usuário", value: params[:user_ids] %>
+	</div>
+	<div class="mb-3">
+		<%= form.label :title, "Título", class: "form-label" %>
+		<%= form.text_field :title, class: "form-control", placeholder: "Título do chat" %>
+	</div>
+	<div class="mb-3">
+		<%= form.submit "Enviar", class: "btn btn-primary" %>
+	</div>
+<% end %>
