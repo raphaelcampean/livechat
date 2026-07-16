@@ -39,7 +39,7 @@ O projeto conta com uma estrutura relacional sólida para gerenciar múltiplos c
 
 ### Pré-requisitos
 Certifique-se de ter instalado:
-* **Ruby** (versão especificada em `.ruby-version`)
+* **Ruby** 3.2.4
 * **Rails 7+**
 * **Docker** (opcional, caso prefira rodar via container)
 
