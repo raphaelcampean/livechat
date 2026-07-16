@@ -1,38 +1,49 @@
 # 💬 Livechat
 
-Uma aplicação de chat em tempo real desenvolvida para explorar o poder do **Action Cable**, **WebSockets** e **Hotwire (Turbo Streams)** no **Ruby on Rails 7**. O projeto demonstra como construir uma experiência de comunicação instantânea, reativa e bidirecional de forma extremamente eficiente, sem a necessidade de frameworks SPA complexos no frontend.
+Uma aplicação de chat em tempo real desenvolvida para explorar o poder do **Action Cable**, **WebSockets** e **Turbo Streams** nativos do **Ruby on Rails 7**. O foco deste projeto é demonstrar como implementar uma comunicação bidirecional e instantânea de forma simples, elegante e sem a necessidade de frameworks Javascript complexos.
 
 ---
 
-## 🚀 Tecnologias e Conceitos Utilizados
+## 🚀 Tecnologias e Recursos Utilizados
 
 * **Backend:** Ruby 3.x / Rails 7.x
 * **Real-time:** Action Cable (WebSockets) & Turbo Streams
-* **Frontend:** Hotwire (Turbo Frames & Stimulus JS)
-* **Estilização:** Tailwind CSS (via Tailwind CSS Rails gem)
-* **Banco de Dados:** PostgreSQL / SQLite
-* **Gerenciamento de Fila/PubSub:** Redis (para produção/escalabilidade do Action Cable)
+* **Autenticação:** Devise (Gerenciamento completo de usuários)
+* **JS Bundler:** Importmap (Gerenciamento de dependências JS sem Node.js/Yarn)
+* **Banco de Dados:** SQLite (Desenvolvimento) / Prontidão para PostgreSQL
+* **Testes:** Minitest (Suíte nativa do Rails para Models, Controllers e Channels)
+* **Containerização:** Docker (Dockerfile incluso para deploy facilitado)
+
+---
+
+## 🏗️ Arquitetura e Modelagem de Dados
+
+O projeto conta com uma estrutura relacional sólida para gerenciar múltiplos chats entre diferentes usuários:
+* **User:** Gerenciado via Devise, permitindo login, cadastro e sessões seguras.
+* **Chat:** Salas de bate-papo que conectam múltiplos usuários através de uma tabela associativa (`chats_users`).
+* **Message:** Mensagens vinculadas tanto ao `User` que a enviou quanto ao `Chat` onde foi postada, atualizadas em tempo real nas views via broadcasting.
 
 ---
 
 ## ✨ Funcionalidades Principais
 
-* **Salas de Chat em Tempo Real:** Criação e entrada em salas de conversa dinâmicas.
-* **Mensagens Instantâneas (No-refresh):** Envio e recebimento de mensagens em tempo real via conexão WebSocket persistente.
-* **Transmissão Bidirecional (Broadcasting):** Uso de `turbo_stream_from` para atualizar a tela de todos os usuários conectados na sala simultaneamente assim que uma mensagem é salva no banco.
-* **Scroll Automático Inteligente:** Controlador Stimulus dedicado para garantir que a janela de chat role para o fim automaticamente ao receber novas mensagens.
-* **Design Limpo e Responsivo:** Interface moderna inspirada nos principais apps de mensagens do mercado utilizando Tailwind CSS.
+* **Autenticação Completa:** Cadastro e login seguro de usuários.
+* **Salas de Chat Multi-usuário:** Suporte a múltiplos canais de conversa dinâmicos.
+* **Comunicação Instantânea (No-refresh):** Envio e recebimento de mensagens instantâneas através de canais persistentes de WebSocket.
+* **Transmissão via Turbo Streams:** Atualização reativa da interface direto do backend para todos os usuários conectados na sala de chat.
+* **Ambiente Dockerizado:** Pronto para ser rodado em containers com o `Dockerfile` configurado.
 
 ---
 
 ## 🛠️ Como Executar o Projeto Localmente
 
 ### Pré-requisitos
-* **Ruby** (versão recomendada no arquivo `.ruby-version`)
+Certifique-se de ter instalado:
+* **Ruby** (versão especificada em `.ruby-version`)
 * **Rails 7+**
-* **Redis** (opcional para desenvolvimento, obrigatório se o Action Cable estiver configurado no modo `redis` em `config/cable.yml`)
+* **Docker** (opcional, caso prefira rodar via container)
 
-### Passo a Passo
+### Passo a Passo (Local)
 
 1. **Clonar o repositório:**
    ```bash
